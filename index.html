@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <title>Ee-export by DavidCWebs</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Ee-export</h1>
+        <h2>Export Expression Engine 1 into WordPress</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/DavidCWebs/ee-export/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/DavidCWebs/ee-export/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/DavidCWebs/ee-export" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="export-from-expression-engine-to-wordpress" class="anchor" href="#export-from-expression-engine-to-wordpress"><span class="octicon octicon-link"></span></a>Export From Expression Engine to WordPress</h1>
+
+<p>Refers to Expression Engine 1.6.7</p>
+
+<p>Create a working local copy of the EE site:</p>
+
+<ol>
+<li>Download database</li>
+<li>Create an empty target database locally</li>
+<li>Backup local DBs <code>mysqldump -u username -p --all-databases &gt; all_localhost_databases.sql</code>
+</li>
+<li>Import the Database: <code>mysql -u username -p target_db &lt; ~/Downloads/download.sql</code>
+</li>
+<li>Download files and place EE site in the document root directory e.g. /var/www/ee-site</li>
+<li>Amend /var/www/ee-site/app/config.php to reflect database settings</li>
+<li>This may allow access to the admin area via localhost/ee-site/app/index.php</li>
+</ol><p>In Expression Engine admin area:</p>
+
+<ul>
+<li>Templates &gt;&gt; Create a New Template Group (in this case, called "Exports").</li>
+<li>Choose Group (select "Exports") &gt;&gt; New Template</li>
+<li>Create a new template called "data.xml" and set template type to "xml".</li>
+<li>Paste contents of <code>data.xml</code> here.</li>
+<li>data.xml sourced from: <a href="http://www.phpdevtips.com/2011/08/how-to-import-an-expressionengine-blog-into-wordpress/">http://www.phpdevtips.com/2011/08/how-to-import-an-expressionengine-blog-into-wordpress/</a>
+</li>
+</ul><p>Amend lines 51 &amp; 52 to reflect the correct EE field names:</p>
+
+<pre><code>&lt;content:encoded&gt;&lt;![CDATA[{if news-body}{news-body}{/if}]]&gt;&lt;/content:encoded&gt;
+&lt;excerpt:encoded&gt;&lt;![CDATA[{if news-summary}{news-summary}{/if}]]&gt;&lt;/excerpt:encoded&gt;
+</code></pre>
+
+<h2>
+<a name="find-correct-ee-fields" class="anchor" href="#find-correct-ee-fields"><span class="octicon octicon-link"></span></a>Find Correct EE Fields</h2>
+
+<p>Templates &gt;&gt; Choose Group &gt;&gt; Click relevant template name</p>
+
+<p>You will see the relevant fields in the template content.</p>
+
+<h2>
+<a name="importing" class="anchor" href="#importing"><span class="octicon octicon-link"></span></a>Importing</h2>
+
+<p>Follow instructions in the comment section of data.xml</p>
+
+<h2>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
+
+<p>The data.xml code was taken from this tutorial:
+<a href="http://www.phpdevtips.com/2011/08/how-to-import-an-expressionengine-blog-into-wordpress/">http://www.phpdevtips.com/2011/08/how-to-import-an-expressionengine-blog-into-wordpress/</a></p>
+
+<p><a href="http://www.hopstudios.com/blog/exporting_from_expressionengine_into_wordpress#.VCpWZHVdUYP">http://www.hopstudios.com/blog/exporting_from_expressionengine_into_wordpress#.VCpWZHVdUYP</a></p>
+
+<p><a href="http://www.farces.com/wikis/naked-server/wordpress/ee-migration/">http://www.farces.com/wikis/naked-server/wordpress/ee-migration/</a></p>
+
+<p><a href="http://kodegeek.wordpress.com/2009/12/02/export-import-expressionengine-to-wordpress/">http://kodegeek.wordpress.com/2009/12/02/export-import-expressionengine-to-wordpress/</a></p>
+
+<p><a href="http://www.bettnet.com/moving-expression-engine-1-wordpress/">http://www.bettnet.com/moving-expression-engine-1-wordpress/</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
